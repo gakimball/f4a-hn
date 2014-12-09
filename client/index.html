@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en" ng-app="application">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Foundation Angular</title>
+    <link href="/assets/css/app.css" rel="stylesheet" type="text/css">
+    <script src="/assets/js/app.js"></script>
+    <script src="/assets/js/routes.js"></script>
+    <script src="/assets/js/angular.js"></script>
+  </head>
+  <body>
+    <div class="grid-frame vertical">
+      <div class="header grid-content shrink" style="padding: 0;">
+        <ul class="primary condense menu-bar">
+          <li><a><strong>Yeti News</strong></a></li>
+        </ul>
+      </div>
+      <div class="grid-block">
+        <div class="story-list" ng-controller="HNController">
+          <div class="card" zf-open="storyPanel" ng-repeat="story in stories" ui-sref="story({id: story.id})">
+            <div class="card-section">
+              <h6 ng-bind="story.title"></h6>
+            </div>
+            <div class="card-divider">
+              <p class="author" ng-bind="story.by"></p>
+              <p class="date" ng-bind="story.time * 1000 | date:'MMM d / h:mm a'"></p>
+            </div>
+          </div>
+        </div>
+        <div class="grid-block" id="storyPanel">
+          <div class="grid-block vertical" ng-class="['ui-animation']" ui-view></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

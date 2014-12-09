@@ -1,0 +1,104 @@
+@import "settings";
+@import "foundation";
+
+.card {
+  width: 100%;
+
+  @include scale(in, 0, 1, $duration: 0.5s, $timing: bounceIn);
+
+  &.ng-enter-stagger {
+    transition-delay: 0.1s;
+  }
+}
+
+.header .menu-bar {
+  margin-bottom: 0;
+}
+
+.story-list {
+  @include grid-content;
+  @include breakpoint(medium) {
+    @include grid-size(4);
+  }
+  @include breakpoint(large) {
+    @include grid-size(3);
+  }
+
+  padding: 0.5rem;
+  background: #e9e9e9;
+
+  .card {
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 1px 2px rgba(#000, 0.8);
+    }
+  }
+  .card-divider {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .author, .date {
+    color: #666;
+    margin: 0;
+    font-size: 0.8rem;
+  }
+}
+
+.story-frame {
+  width: 100%;
+  height: 100%;
+}
+
+.main-view {
+  display: flex;
+  flex: 1;
+}
+
+.story-container {
+  position: relative;
+}
+
+.story-title .score {
+  color: #666;
+  margin-left: 1rem;
+}
+
+.story-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+// #storyPanel {
+//   @include breakpoint(small only) {
+//     @include panel-layout(right, 100%);
+//   }
+//   height: 100% !important;
+// }
+
+.story-comments {
+  @extend %panel-base;
+  @include panel-layout(bottom, 100%);
+
+  background: rgba(white, 0.95);
+  padding: 1rem;
+
+  @include breakpoint(large) {
+    padding: 2rem;
+  }
+
+  .card {
+    margin-bottom: 1rem;
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

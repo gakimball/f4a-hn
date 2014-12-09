@@ -1,0 +1,27 @@
+---
+name: story
+url: /story/:id
+controller: HNStoryController
+---
+
+<div class="story-title title-bar order-2 small-order-1">
+  <div class="left">
+    <span class="title" ng-bind="story.title"></span>
+    <span class="score">{{story.score}} points</span>
+  </div>
+  <div class="right">
+    <a zf-toggle="storyComments" href=""><img zf-iconic data-src="assets/img/iconic/comment-square.svg" class="iconic-sm"> Show Comments</a>
+  </div>
+</div>
+<div class="grid-block story-container order-1 small-order-2">
+  <iframe class="story-frame" ng-if="story" ng-src="{{trust(story.url)}}" hn-frameload="" frameborder="0"></iframe>
+  <div zf-panel position="bottom" id="storyComments" class="story-comments fast easeInOut">
+    <div class="card" ng-repeat="comment in comments">
+      <div class="card-divider">
+        <span ng-bind="comment.by"></span>
+      </div>
+      <div class="card-section" ng-bind-html="trustHtml(comment.text)">
+      </div>
+    </div>
+  </div>
+</div>
